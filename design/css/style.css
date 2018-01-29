@@ -7,6 +7,7 @@ font-family: 'Righteous', cursive;
 html, body {
     height: 100%;
 }
+
 p {
     font-family: 'Roboto Mono', monospace;
 
@@ -28,6 +29,7 @@ p {
     font-size: 1.5em;
     text-align: left;
     padding: 2em;
+    overflow-y: scroll; 
 }
 
 #blog-author {
@@ -55,4 +57,39 @@ p {
 
 #copyright {
     font-size: 1em;
+}
+
+/* Right Side blog */
+
+.page-titles {
+    border-bottom: 0.05em solid black;
+    margin-top: 1.6em;
+    margin-bottom: 1em;
+}
+
+.content {
+    padding-top: 2em;
+    padding-left: 2em;
+    padding-right: 2em; 
+    height: 100vh;
+    
+}
+
+/* Responsividade */
+
+@media (min-width: 768px) {
+    html, body {
+        overflow: hidden;
+    }
+
+    .content {
+        overflow: scroll;
+        padding-right: 4em;
+    }
+}
+
+@media (min-width: 1200px) {
+    .content {
+        padding-right: 12em;
+    }
 }

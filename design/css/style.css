@@ -61,12 +61,6 @@ p {
 
 /* Right Side blog */
 
-.page-titles {
-    border-bottom: 0.05em solid black;
-    margin-top: 1.6em;
-    margin-bottom: 1em;
-}
-
 .content {
     padding-top: 2em;
     padding-left: 2em;
@@ -74,6 +68,22 @@ p {
     height: 100vh;
     
 }
+
+.page-titles {
+    border-bottom: 0.05em solid black;
+    margin-top: 1.6em;
+    margin-bottom: 1em;
+}
+
+.post-titles {
+    font-size: 3em;
+    color: #136CC0;
+}
+
+.post-date {
+    color: #0BA9D7;
+}
+
 
 /* Responsividade */
 

@@ -11,12 +11,12 @@
     <link rel="stylesheet" href="{% static "blog/css/bootstrap.min.css" %} ">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{% static "blog/css/style.css "%}">
+    <link rel="stylesheet" href="{% static "blog/css/style.css" %}">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Righteous|Roboto+Mono" rel="stylesheet">
 
-    <title>Vitor Filardi's Blog</title>
+    <title>{% block title %}{% endblock %}</title>
   </head>
   <body>
 
@@ -27,12 +27,12 @@
                 <h1 id="blog-author">Vitor Filardi</h1>
                 <nav id="left-navbar" role="navigation">                       
                     <ul id="menu-list" class="nav flex-column">
-                        <li class="nav-item"><a class="nav-link active" href="#">Home </a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Posts</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="{{ index }}">Home </a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Posts in Portuguese</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Cheat sheets!</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Curriculum</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">
-                        <img id="github-icon" src="icon/mark-github.svg" alt="ícone do Github" style="height: 1.5em; width: 1.5em;">
+                        <img id="github-icon" src="{% static "blog/icon/mark-github.svg" %}" alt="ícone do Github" style="height: 1.5em; width: 1.5em;">
                         </a></li>
                     </ul>                    
                 </nav>                                          
@@ -41,13 +41,13 @@
         </div>  <!-- end Left side Menu -->
 
         <div class="col-md-7 col-lg-8 col-xl-9">
-            
+            {% block content %}{% endblock  %}
         </div>
     </div>
     
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="{% static "blog/js/bootstrap.min.js" %}"></script>
   </body>
 </html>

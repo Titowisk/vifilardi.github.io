@@ -8,7 +8,7 @@ class Post(models.Model):
     # no need for author (because it's always myself)
     title = models.CharField(max_length=200)
     text = models.TextField()
-    date_created = models.DateTimeField(auto_add_now=True)
+    date_created = models.DateTimeField(auto_now_add=True)
     date_posted = models.DateTimeField(blank=True, null=True)
 
     def __str__(self):

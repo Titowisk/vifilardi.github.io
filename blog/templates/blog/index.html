@@ -9,8 +9,10 @@
         {% for post in post_list %}        
         <article>
             <header>
-                <h2 class="post-titles">{{ post.title }}</h2>
-                <h3 class="post-date">{{ post.date_posted }}</h3>
+                <h2 class="post-titles">
+                    <a href="">{{ post.title }}</a>
+                </h2>
+                <h3 class="post-date">{{ post.date_posted|date:"d N Y " }}</h3>
             </header>
             <p class="text-justify">
                 {{ post.text|truncatewords:30 }}

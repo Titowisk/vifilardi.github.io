@@ -10,6 +10,7 @@ class Post(models.Model):
     text = models.TextField()
     date_created = models.DateTimeField(auto_now_add=True)
     date_posted = models.DateTimeField(blank=True, null=True)
+    # slug, language
 
     def __str__(self):
         return self.title

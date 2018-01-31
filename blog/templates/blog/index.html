@@ -10,7 +10,7 @@
         <article>
             <header>
                 <h2 class="post-titles">
-                    <a href="">{{ post.title }}</a>
+                    <a href="{% url 'post' slug=post.slug %}">{{ post.title }}</a>
                 </h2>
                 <h3 class="post-date">{{ post.date_posted|date:"d N Y " }}</h3>
             </header>

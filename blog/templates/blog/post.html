@@ -1,15 +1,20 @@
 {% extends "blog/base.html" %}
 
-{% block title %}{{ post_test.title }}{% endblock  %}
+{% block title %}{{ post.title }}{% endblock  %}
 
 {% block content %}
-<article>
+<article class="content">
     <header>
-        <h2 class="post-titles">{{ post_test.title }}</h2>
-        <h3 class="post-date">{{ post_test.date_posted|date:"d N Y " }}</h3>
+        <h2 class="post-titles">{{ post.title }}</h2>
+        <h3 class="post-date">{{ post.date_posted|date:"d N Y " }}</h3>
     </header>
-    <p class="text-justify">
-        {{ post_test.text }}
-    </p>
+    {% autoescape off %}
+        {{ post.text }}
+    {% endautoescape %}
+   
 </article>
 {% endblock %}
+
+{% comment "Optional note" %}
+    https://docs.djangoproject.com/en/2.0/ref/templates/builtins/#built-in-filter-reference
+{% endcomment %}

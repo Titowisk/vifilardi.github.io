@@ -4,7 +4,7 @@ from blog import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('articles/', views.post, name='post'),
+    re_path(r'articles/(?P<slug>[\w_-]+)?', views.post, name='post'),
 ]
 
-# r'^articles/<str:date_published>/(?P<slug>[\w_-]+)/?'
+# r'^articles/<str:date_published>/(?P<slug>[\w_-]+)?'

@@ -6,30 +6,17 @@
 <section id="posts">
     <div class="content">
         <h1 class="page-titles">Últimos Posts</h1>
-        <h2>Proin eget tortor risus.</h2>
-        <p class="text-justify">
-            Nulla porttitor accumsan tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-            Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Nulla porttitor accumsan tincidunt.
-        </p>
-            
-        <h2>Proin eget tortor risus.</h2>
-        <p class="text-justify">
-            Donec rutrum congue leo eget malesuada. Nulla porttitor accumsan tincidunt. Proin eget tortor risus. 
-            Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.
-        </p>
-
-        <h2>Proin eget tortor risus.</h2>
-        <p class="text-justify">
-                Quisque velit nisi, pretium ut lacinia in, elementum id enim. Donec rutrum congue leo eget malesuada. 
-                Donec rutrum congue leo eget malesuada. Donec sollicitudin molestie malesuada. 
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ultricies ligula sed magna dictum porta.
-        </p>
-
-        <h2>Proin eget tortor risus.</h2>
-        <p class="text-justify">
-            Donec rutrum congue leo eget malesuada. Nulla porttitor accumsan tincidunt. Proin eget tortor risus. 
-            Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.
-        </p>
+        {% for post in post_list %}        
+        <article>
+            <header>
+                <h2 class="post-titles">{{ post.title }}</h2>
+                <h3 class="post-date">{{ post.date_posted }}</h3>
+            </header>
+            <p class="text-justify">
+                {{ post.text|truncatewords:30 }}
+            </p>
+        </article>
+        {% endfor %}
     </div>
 </section>
 {% endblock %}

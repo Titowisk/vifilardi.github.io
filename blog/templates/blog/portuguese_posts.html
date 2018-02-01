@@ -1,0 +1,29 @@
+{% extends "blog/base.html" %}
+
+{% block title %}Portuguese Posts{% endblock %}
+
+{% block content %}
+<section id="posts">
+    <div class="content">
+        <h1 class="page-titles">Publicações em Português</h1>
+        
+        {% if pt_br_posts %}
+            <ul class="post-list">
+            {% for post in pt_br_posts %}     
+                <li>
+                    <a href="{% url 'post' slug=post.slug %}">
+                        {{ post.title }}
+                        <small>{{ post.date_posted|date:"d N Y " }}</small>
+                    </a>
+                    
+                </li>
+            {% endfor %}
+            </ul>
+        {% else%}
+            <div class="alert alert-info" role="alert">
+                Ainda não foram criadas publicações :)
+            </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

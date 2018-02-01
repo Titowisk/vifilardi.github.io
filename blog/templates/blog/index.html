@@ -15,9 +15,9 @@
                 </h2>
                 <span class="post-date">{{ post.date_posted|date:"d N Y " }}</span>
             </header>
-            <p class="text-justify">
+            {% autoescape off %}
                 {{ post.text|show_only_first_p }}
-            </p>
+            {% endautoescape %}
         </article>
         {% endfor %}
     </div>

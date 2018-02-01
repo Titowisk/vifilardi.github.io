@@ -6,6 +6,8 @@ urlpatterns = [
     path('', views.index, name='index'),
     re_path(r'articles/(?P<slug>[\w_-]+)?', views.post, name='post'),
     path('pt-br', views.pt_posts, name='pt-br'),
+    path('en', views.en_posts, name='en'),
+
 ]
 
 # r'^articles/<str:date_published>/(?P<slug>[\w_-]+)?'

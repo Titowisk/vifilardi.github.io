@@ -1,4 +1,5 @@
 {% extends "blog/base.html" %}
+{% load blog_extra_filter %}
 
 {% block title %}Vitor Filardi's Blog{% endblock %}
 
@@ -15,7 +16,7 @@
                 <span class="post-date">{{ post.date_posted|date:"d N Y " }}</span>
             </header>
             <p class="text-justify">
-                {{ post.text|truncatewords:30 }}
+                {{ post.text|show_only_first_p }}
             </p>
         </article>
         {% endfor %}

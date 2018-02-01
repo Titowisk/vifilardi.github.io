@@ -28,7 +28,20 @@ class PortuguesePostsView(ListView):
 
         return queryset
 
+class EnglishPostsView(ListView):
+    
+    template_name = "blog/english_posts.html"
+    context_object_name = "en_posts"
+    # pagination?
+
+    def get_queryset(self):
+        
+        queryset = Post.objects.filter(language="english-br") 
+
+        return queryset
+
 
 index = IndexView.as_view()
 post = PostView.as_view()
 pt_posts = PortuguesePostsView.as_view()
+en_posts = EnglishPostsView.as_view()

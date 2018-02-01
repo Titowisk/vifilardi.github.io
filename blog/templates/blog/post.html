@@ -4,9 +4,11 @@
 
 {% block content %}
 <article class="content">
-    <header>
-        <h2 class="post-titles">{{ post.title }}</h2>
-        <h3 class="post-date">{{ post.date_posted|date:"d N Y " }}</h3>
+    <header class="post-header">
+        <h2 class="post-titles">
+            {{ post.title }}
+        </h2>
+        <span class="post-date">{{ post.date_posted|date:"d N Y " }}</span>
     </header>
     {% autoescape off %}
         {{ post.text }}

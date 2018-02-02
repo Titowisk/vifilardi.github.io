@@ -13,7 +13,7 @@
                 <h2 class="post-titles">
                     <a href="{% url 'post' slug=post.slug %}">{{ post.title }}</a>
                 </h2>
-                <span class="post-date">{{ post.date_posted|date:"d N Y " }}</span>
+                <span class="post-date">{{ post.posted|date:"d N Y " }}</span>
             </header>
             {% autoescape off %}
                 {{ post.text|show_only_first_p }}

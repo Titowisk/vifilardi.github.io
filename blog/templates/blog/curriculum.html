@@ -1,9 +1,10 @@
 {% extends "blog/base.html" %}
 
-{% block title %}{{ curriculum.title }}{% endblock  %}
+{% block title %}Curriculum{% endblock  %}
 
 {% block content %}
 <article class="content">
+    {% if curriculum %}
     <header class="post-header">
         <h2 class="post-titles">
             {{ curriculum.title }}
@@ -12,6 +13,9 @@
     {% autoescape off %}
         {{ curriculum.text }}
     {% endautoescape %}
-   
+
+    {% else %}
+    <p class="alert-warning">Add your cv as a Post with title: "Curriculum"</p>
+    {% endif %}
 </article>
 {% endblock %}

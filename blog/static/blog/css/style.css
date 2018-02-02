@@ -108,6 +108,19 @@ small {
     font-size: 70%;
 }
 
+.post-tags {
+    display: inline-block;
+    width: 100%;
+    margin-top: 1em;
+    padding-top: 0.8em;
+    border-top: solid 0.2em #136CC0;
+}
+
+.tag-link {
+    display: inline-block;
+    vertical-align: text-top;
+}
+
 
 /* Responsividade */
 

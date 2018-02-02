@@ -13,6 +13,18 @@
     {% autoescape off %}
         {{ post.text }}
     {% endautoescape %}
+
+    {% if post.tag %}     
+    <div class="post-tags">
+        {% for tag in post.tag.all  %}
+        <a class="tag-link" href="#">
+            <span>{% include 'svg/tag.html' %}</span> 
+            <span>{{ tag.tag }}</span>
+        </a>
+        {% endfor %}
+    </div>
+    {% endif %}
+    
    
 </article>
 {% endblock %}

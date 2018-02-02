@@ -1,4 +1,4 @@
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, TemplateView
 from .models import Post
 
 # Create your views here.
@@ -25,11 +25,15 @@ class PostView(DetailView):
     model = Post
     context_object_name = "post"   
 
-class CurriculumView(DetailView):
+class CurriculumView(TemplateView):
     
     template_name = "blog/curriculum.html"
-    model = Post
-    context_object_name = "curriculum"
+
+    def get_context_data(self, **kwargs):
+        context = super(CurriculumView, self).get_context_data(**kwargs)
+        context['curriculum'] = Post.objects.get(slug='curriculum')
+        return context
+    
 
 class PortuguesePostsView(ListView):
     
@@ -38,9 +42,7 @@ class PortuguesePostsView(ListView):
     # pagination?
 
     def get_queryset(self):
-        
         queryset = Post.objects.filter(language="portuguese-br") 
-
         return queryset
 
 class EnglishPostsView(ListView):
@@ -51,7 +53,7 @@ class EnglishPostsView(ListView):
 
     def get_queryset(self):
         
-        queryset = Post.objects.filter(language="english-br") 
+        queryset = Post.objects.filter(language="english") 
 
         return queryset
 

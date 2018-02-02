@@ -34,8 +34,8 @@ class Post(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     posted = models.DateTimeField(blank=True, null=True)
-    tag = models.ManyToManyField('Tag', related_name='posts', blank=True, null=True)
-    category = models.FOreignKey('Category', related_name='posts')
+    tag = models.ManyToManyField('Tag', related_name='posts', blank=True)
+    category = models.ForeignKey('Category', on_delete=models.CASCADE, related_name='posts')
     status = models.CharField(max_length=20, default='Draft', choices=STATUS_CHOICES)
 
     def __str__(self):
@@ -44,7 +44,7 @@ class Post(models.Model):
     def save(self, *args, **kwargs):
         self.slug = text.slugify(self.title)
         # When published the posted date will be automatically filled
-        if self.status = 'Published':
+        if self.status == 'Published':
             self.posted = timezone.now()
         super().save(*args, **kwargs)
 

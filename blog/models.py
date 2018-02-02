@@ -3,35 +3,58 @@ from django.utils import timezone, text
 
 # Create your models here.
 
-class Post(models.Model):
+class Category(models.Model):
 
+    title = models.CharField(max_length=200)
+    slug = models.CharField(max_length=100, unique=True)
+    description = models.CharField(max_length=250)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+    
+    def __str__(self):
+        return self.title
+    
+    def save(self, *args, **kwargs):
+        self.slug = text.slugify(self.title)
+        super().save(*args, **kwargs)
+    
+
+
+class Post(models.Model):
+    DRAFT = 'Draft'
+    PUBLISHED = 'Published'
+    STATUS_CHOICES = (
+        (DRAFT, 'Draft'),
+        (PUBLISHED, 'Published'),
+    )
     # no need for author (because it's always myself)
     title = models.CharField(max_length=200)
-    slug = models.SlugField(max_length=100, unique=True, null=True, blank=True) # remove null atributte when erasing the database
+    slug = models.SlugField(max_length=100, unique=True)
     text = models.TextField()
-    language = models.CharField(max_length=50, default='portuguese-br', blank=True) # portuguese, english, etc..
     created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
     posted = models.DateTimeField(blank=True, null=True)
-    #modified?
-    tag = models.ManyToManyField('Tag', related_name='posts', blank=True)
+    tag = models.ManyToManyField('Tag', related_name='posts', blank=True, null=True)
+    category = models.FOreignKey('Category', related_name='posts')
+    status = models.CharField(max_length=20, default='Draft', choices=STATUS_CHOICES)
 
     def __str__(self):
         return self.title
 
     def save(self, *args, **kwargs):
         self.slug = text.slugify(self.title)
+        # When published the posted date will be automatically filled
+        if self.status = 'Published':
+            self.posted = timezone.now()
         super().save(*args, **kwargs)
 
-    def publish(self):
-        self.posted = timezone.now() 
-        self.save()
 
 class Tag(models.Model):
 
-    tag = models.CharField(max_length=50, unique=True)
-    slug = models.SlugField(max_length=100, unique=True, null=True, blank=True)
+    title = models.CharField(max_length=50, unique=True)
+    slug = models.SlugField(max_length=100, unique=True)
     created = models.DateTimeField(auto_now_add=True)
-    modified = models.DateTimeField(auto_now=True)
+    updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.tag

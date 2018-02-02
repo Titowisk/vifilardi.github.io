@@ -1,21 +1,19 @@
 from django.contrib import admin
-from blog.models import Post, Tag
+from blog.models import Post, Tag, Category
 
 # Register your models here.
 
 class PostAdmin(admin.ModelAdmin):
-    
-    fields = ('title', 'text', 'language', 'tag')
-    list_display = ('title', 'slug', 'posted', 'created')
-    date_hierarchy = 'created'
-    empty_value_display = 'not published yet'
+    pass
 
 class TagAdmin(admin.ModelAdmin):
-    
-    fields = ('tag',)
-    list_display = ('tag', 'slug', 'created', 'modified')
+    pass
 
-admin.site.register(Tag, TagAdmin)
+class CategoryAdmin(admin.ModelAdmin):
+    pass
+
 admin.site.register(Post, PostAdmin)
+admin.site.register(Tag, TagAdmin)
+admin.site.register(Category, CategoryAdmin)
 
 # https://docs.djangoproject.com/en/2.0/ref/contrib/admin/#modeladmin-options

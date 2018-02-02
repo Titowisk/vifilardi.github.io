@@ -13,9 +13,7 @@ class Post(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     posted = models.DateTimeField(blank=True, null=True)
     #modified?
-    tag = models.ManyToManyField(
-        'Tags', related_name='posts', null=True, blank=True, on_delete=models.CASCADE
-        )
+    tag = models.ManyToManyField('Tags', related_name='posts', blank=True)
 
     def __str__(self):
         return self.title

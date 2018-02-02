@@ -10,11 +10,26 @@ class IndexView(ListView):
     context_object_name = "post_list"
     # pagination?
 
+    def get_context_data(self, **kwargs):
+
+        context = super(IndexView, self).get_context_data(**kwargs)
+        curriculum_post = Post.objects.get(slug='curriculum')
+        context['slug'] = curriculum_post.slug
+
+        return context
+
+
 class PostView(DetailView):
     
     template_name = "blog/post.html"
     model = Post
-    context_object_name = "post"    
+    context_object_name = "post"   
+
+class CurriculumView(DetailView):
+    
+    template_name = "blog/curriculum.html"
+    model = Post
+    context_object_name = "curriculum"
 
 class PortuguesePostsView(ListView):
     
@@ -43,5 +58,6 @@ class EnglishPostsView(ListView):
 
 index = IndexView.as_view()
 post = PostView.as_view()
+curriculum = CurriculumView.as_view()
 pt_posts = PortuguesePostsView.as_view()
 en_posts = EnglishPostsView.as_view()

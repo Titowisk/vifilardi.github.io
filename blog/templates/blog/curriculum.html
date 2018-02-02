@@ -1,0 +1,17 @@
+{% extends "blog/base.html" %}
+
+{% block title %}{{ curriculum.title }}{% endblock  %}
+
+{% block content %}
+<article class="content">
+    <header class="post-header">
+        <h2 class="post-titles">
+            {{ curriculum.title }}
+        </h2>
+    </header>
+    {% autoescape off %}
+        {{ curriculum.text }}
+    {% endautoescape %}
+   
+</article>
+{% endblock %}

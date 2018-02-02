@@ -9,7 +9,7 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=100, unique=True, null=True) # remove null atributte when erasing the database
     text = models.TextField()
-    language = models.CharField(max_length=50, default='portuguese-br') # portuguese, english, etc..
+    language = models.CharField(max_length=50, default='portuguese-br', blank=True) # portuguese, english, etc..
     date_created = models.DateTimeField(auto_now_add=True)
     date_posted = models.DateTimeField(blank=True, null=True)
 

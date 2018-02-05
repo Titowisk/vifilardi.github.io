@@ -16,7 +16,7 @@ class IndexView(ListView):
         context = super(IndexView, self).get_context_data(**kwargs)
         curriculum_post = Post.objects.get(slug='curriculum')
         context['slug'] = curriculum_post.slug
-        context['categories'] = Category.objects.all()
+        # context['categories'] = Category.objects.all()
 
         return context
 
@@ -50,6 +50,14 @@ class PostsListView(ListView):
         context = super(PostsListView, self).get_context_data(**kwargs)
         context['category'] = Category.objects.get(slug=self.kwargs['slug'])
         return context 
+
+index = IndexView.as_view()
+post = PostView.as_view()
+curriculum = CurriculumView.as_view()
+posts_list = PostsListView.as_view()
+# pt_posts = PortuguesePostsView.as_view()
+# en_posts = EnglishPostsView.as_view()
+
     
 """
 class PortuguesePostsView(ListView):
@@ -74,10 +82,3 @@ class EnglishPostsView(ListView):
 
         return queryset
 """
-
-index = IndexView.as_view()
-post = PostView.as_view()
-curriculum = CurriculumView.as_view()
-posts_list = PostsListView.as_view()
-# pt_posts = PortuguesePostsView.as_view()
-# en_posts = EnglishPostsView.as_view()

@@ -13,7 +13,7 @@
                 <li>
                     <a href="{% url 'post' slug=post.slug %}">
                         {{ post.title }}
-                        <small>{{ post.date_posted|date:"d N Y " }}</small>
+                        <small>{{ post.posted|date:"d N Y " }}</small>
                     </a>
                     
                 </li>

@@ -18,7 +18,7 @@
     <div class="post-tags">
         {% for tag in post.tag.all  %}
         <a class="tag-link" href="#">
-            <span>{% include 'svg/tag.html' %}</span> 
+            <span>{% include 'svg/tag-post.html' %}</span> 
             <span>{{ tag.title }}</span>
         </a>
         {% endfor %}

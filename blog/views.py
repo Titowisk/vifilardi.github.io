@@ -1,5 +1,6 @@
 from django.views.generic import ListView, DetailView, TemplateView
-from .models import Post
+from django.shortcuts import get_object_or_404
+from .models import Post, Category
 
 # Create your views here.
 
@@ -15,6 +16,7 @@ class IndexView(ListView):
         context = super(IndexView, self).get_context_data(**kwargs)
         curriculum_post = Post.objects.get(slug='curriculum')
         context['slug'] = curriculum_post.slug
+        context['categories'] = Category.objects.all()
 
         return context
 
@@ -33,8 +35,23 @@ class CurriculumView(TemplateView):
         context = super(CurriculumView, self).get_context_data(**kwargs)
         context['curriculum'] = Post.objects.get(slug='curriculum')
         return context
-    
 
+class PostsListView(ListView):
+    
+    template_name = 'blog/posts_list.html'
+    context_object_name = 'posts_list'
+
+    def get_queryset(self):
+        queryset = Post.objects.filter(category__slug=self.kwargs['slug'])
+        return queryset
+
+    # what is wrong here??
+    def get_context_data(self, **kwargs):
+        context = super(PostsListView, self).get_context_data(**kwargs)
+        context['category'] = Category.objects.get(slug=self.kwargs['slug'])
+        return context 
+    
+"""
 class PortuguesePostsView(ListView):
     
     template_name = "blog/portuguese_posts.html"
@@ -56,10 +73,11 @@ class EnglishPostsView(ListView):
         queryset = Post.objects.filter(language="english") 
 
         return queryset
-
+"""
 
 index = IndexView.as_view()
 post = PostView.as_view()
 curriculum = CurriculumView.as_view()
-pt_posts = PortuguesePostsView.as_view()
-en_posts = EnglishPostsView.as_view()
+posts_list = PostsListView.as_view()
+# pt_posts = PortuguesePostsView.as_view()
+# en_posts = EnglishPostsView.as_view()

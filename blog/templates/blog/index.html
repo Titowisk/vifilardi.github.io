@@ -7,18 +7,23 @@
 <section id="posts">
     <div class="content">
         <h1 class="page-titles">Últimos Posts</h1>
-        {% for post in post_list %}        
-        <article>
-            <header>
-                <h2 class="post-titles">
-                    <a href="{% url 'post' slug=post.slug %}">{{ post.title }}</a>
-                </h2>
-                <span class="post-date">{{ post.posted|date:"d N Y " }}</span>
-            </header>
-            {% autoescape off %}
-                {{ post.text|show_only_first_p }}
-            {% endautoescape %}
-        </article>
+        {% for post in post_list %}   
+            {% if post.slug == 'curriculum' %}
+            {% else %}
+                {% if post.status == 'Published' %}
+                <article>
+                    <header>
+                        <h2 class="post-titles">
+                            <a href="{% url 'post' slug=post.slug %}">{{ post.title }}</a>
+                        </h2>
+                        <span class="post-date">{{ post.posted|date:"d N Y " }}</span>
+                    </header>
+                    {% autoescape off %}
+                        {{ post.text|show_only_first_p }}
+                    {% endautoescape %}
+                </article>
+                {% endif %}
+            {% endif %}     
         {% endfor %}
     </div>
 </section>

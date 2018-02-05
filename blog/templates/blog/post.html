@@ -19,7 +19,7 @@
         {% for tag in post.tag.all  %}
         <a class="tag-link" href="#">
             <span>{% include 'svg/tag.html' %}</span> 
-            <span>{{ tag.tag }}</span>
+            <span>{{ tag.title }}</span>
         </a>
         {% endfor %}
     </div>

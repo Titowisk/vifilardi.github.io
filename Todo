@@ -1,17 +1,6 @@
 Eu quero um blog em que há a data de publicação e também a data de Edição mais recente.
 
-** Mudar as views e htmls Portuguese, English
 
 ** filtrar as postagens com status=published para renderizar os objetos
 
-**class CategoryView(ListView):
-
-	template = "category.html"
-	model = Category
-	
-	def get_context_data(self, *args, **kwargs):
-
-		context = super...
-		context['posts'] = Post.objects.filter(category='')
-
-** Alterar URLS
+** Utilizar o middlware para carregar as categorias em todas as páginas do site

@@ -1,0 +1,29 @@
+{% extends "blog/base.html" %}
+
+{% block title %}{{category.title}}{% endblock %}
+
+{% block content %}
+<section id="posts">
+    <div class="content">
+        <h1 class="page-titles">{{category.title}}</h1>
+        
+        {% if posts_list %}
+            <ul class="post-list">
+            {% for post in posts_list %}     
+                <li>
+                    <a href="{% url 'post' slug=post.slug %}">
+                        {{ post.title }}
+                        <small>{{ post.date_posted|date:"d N Y " }}</small>
+                    </a>
+                    
+                </li>
+            {% endfor %}
+            </ul>
+        {% else%}
+            <div class="alert alert-info" role="alert">
+                Still no publications in here :).
+            </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

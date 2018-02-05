@@ -28,9 +28,12 @@
                 <nav id="left-navbar" role="navigation">                       
                     <ul id="menu-list" class="nav flex-column">
                         <li class="nav-item"><a class="nav-link active" href="{% url 'index' %}">Home </a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'pt-br' %}">Posts in Portuguese</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'en' %}">Posts in English</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Cheat sheets!</a></li>
+                        {% for category in categories %}
+                            {% if category.slug == 'curriculum' %}
+                            {% else %}
+                            <li class="nav-item"><a class="nav-link" href="{% url 'posts_list' slug=category.slug %}">{{category.title}}</a></li>
+                            {% endif %}
+                        {% endfor %}
                         <li class="nav-item"><a class="nav-link" href="{% url 'curriculum' %}">Curriculum</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">
                         <img id="github-icon" src="{% static "blog/icon/mark-github.svg" %}" alt="ícone do Github" style="height: 1.5em; width: 1.5em;">

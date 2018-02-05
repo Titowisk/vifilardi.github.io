@@ -57,10 +57,10 @@ class Tag(models.Model):
     updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.tag
+        return self.title
 
     def save(self, *args, **kwargs):
-        self.slug = text.slugify(self.tag)
+        self.slug = text.slugify(self.title)
         super().save(*args, **kwargs)  # Call the "real" save() method
 
 

@@ -12,7 +12,7 @@
             {% else %}
                 {% if post.status == 'Published' %}
                 <article>
-                    <header>
+                    <header class="post-header">
                         <h2 class="post-titles">
                             <a href="{% url 'post' slug=post.slug %}">{{ post.title }}</a>
                         </h2>
@@ -21,6 +21,10 @@
                     {% autoescape off %}
                         {{ post.text|show_only_first_p }}
                     {% endautoescape %}
+                    <br>
+                    <span class="more-link">
+                        <a href="{% url 'post' slug=post.slug %}">More...</a>
+                    </span>
                 </article>
                 {% endif %}
             {% endif %}     

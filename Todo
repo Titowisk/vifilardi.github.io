@@ -3,4 +3,3 @@ Eu quero um blog em que há a data de publicação e também a data de Edição 
 
 ** filtrar as postagens com status=published para renderizar os objetos
 
-** Utilizar o middlware para carregar as categorias em todas as páginas do site

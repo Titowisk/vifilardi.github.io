@@ -1,5 +1,6 @@
 from django.views.generic import ListView, DetailView, TemplateView
 from django.shortcuts import get_object_or_404
+
 from .models import Post, Category
 
 # Create your views here.
@@ -14,8 +15,9 @@ class IndexView(ListView):
     def get_context_data(self, **kwargs):
 
         context = super(IndexView, self).get_context_data(**kwargs)
-        curriculum_post = Post.objects.get(slug='curriculum')
-        context['slug'] = curriculum_post.slug
+        if Post.objects.get(slug='curriculum'):
+            curriculum_post = Post.objects.get(slug='curriculum')
+            context['slug'] = curriculum_post.slug
         # context['categories'] = Category.objects.all()
 
         return context

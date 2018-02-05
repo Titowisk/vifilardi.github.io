@@ -35,10 +35,19 @@
                             {% endif %}
                         {% endfor %}
                         <li class="nav-item"><a class="nav-link" href="{% url 'curriculum' %}">Curriculum</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">
-                        <img id="github-icon" src="{% static "blog/icon/mark-github.svg" %}" alt="ícone do Github" style="height: 1.5em; width: 1.5em;">
-                        </a></li>
-                    </ul>                    
+                    </ul>  
+                    <ul class="menu-icon">
+                        <li class="item-icon">
+                            <a href="#">
+                                {% include 'svg/mark-github.html' %}
+                            </a>
+                        </li>
+                        <li class="item-icon">
+                            <a href="#">
+                                {% include 'svg/tag-menu.html' %}
+                            </a>
+                        </li>
+                    </ul>                  
                 </nav>                                          
                 <p id="copyright">&copy; 2018 </p>
             </div>

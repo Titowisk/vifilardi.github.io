@@ -1,15 +1,14 @@
 {% extends "blog/base.html" %}
 
-{% block title %}Portuguese Posts{% endblock %}
+{% block title %}Tags{% endblock %}
 
 {% block content %}
 <section id="posts">
     <div class="content">
-        <h1 class="page-titles">Publicações em Português</h1>
-        
-        {% if pt_br_posts %}
+        <h1 class="page-titles">{{received_tag_slug.title}}</h1>
             <ul class="post-list">
-            {% for post in pt_br_posts %}     
+            {% for post in received_tag_slug.posts.all %}
+                {% if post.status == 'Published' %}
                 <li>
                     <a href="{% url 'post' slug=post.slug %}">
                         {{ post.title }}
@@ -17,13 +16,10 @@
                     </a>
                     
                 </li>
+                {% endif %}     
             {% endfor %}
             </ul>
-        {% else%}
-            <div class="alert alert-info" role="alert">
-                Ainda não foram criadas publicações :)
-            </div>
-        {% endif %}
     </div>
 </section>
+
 {% endblock %}

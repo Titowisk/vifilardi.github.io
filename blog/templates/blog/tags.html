@@ -1,0 +1,33 @@
+{% extends "blog/base.html" %}
+
+{% block title %}Tags{% endblock %}
+
+{% block content %}
+<section id="tags">
+    <div class="content">
+        <h1 class="page-titles">Tags</h1>
+        
+        {% if tag_list %}
+            <ul class="tag-list">
+            {% for tag in tag_list %}
+                {% if tag.posts.all.count > 0 %}
+                <li class="tag-item">
+                    <a href="{% url 'posts_list_by_tag' slug=tag.slug %}">
+                        {{tag.title}} 
+                        <span class="badge">                        
+                            {{tag.posts.all.count}}                                  
+                        </span>
+                    </a>
+                </li>
+                {% endif %}    
+            {% endfor %}
+            </ul>
+        {% else %}
+            <div class="alert alert-info" role="alert">
+                Create tags in admin first.
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+{% endblock %}

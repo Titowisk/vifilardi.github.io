@@ -1,9 +1,7 @@
 from django.views.generic import ListView, DetailView, TemplateView
 from django.shortcuts import get_object_or_404
 
-from .models import Post, Category
-
-# Create your views here.
+from .models import Post, Category, Tag
 
 class IndexView(ListView):
 
@@ -18,7 +16,6 @@ class IndexView(ListView):
         if Post.objects.get(slug='curriculum'):
             curriculum_post = Post.objects.get(slug='curriculum')
             context['slug'] = curriculum_post.slug
-        # context['categories'] = Category.objects.all()
 
         return context
 
@@ -29,6 +26,7 @@ class PostView(DetailView):
     model = Post
     context_object_name = "post"   
 
+
 class CurriculumView(TemplateView):
     
     template_name = "blog/curriculum.html"
@@ -37,6 +35,7 @@ class CurriculumView(TemplateView):
         context = super(CurriculumView, self).get_context_data(**kwargs)
         context['curriculum'] = Post.objects.get(slug='curriculum')
         return context
+
 
 class PostsListView(ListView):
     
@@ -53,34 +52,27 @@ class PostsListView(ListView):
         context['category'] = Category.objects.get(slug=self.kwargs['slug'])
         return context 
 
+
+class TagsView(ListView):
+    
+    template_name = 'blog/tags.html'
+    model = Tag
+    context_object_name = 'tag_list'
+    
+
+class PostListByTag(ListView):
+
+    template_name = 'blog/posts_list_by_tag.html'
+    context_object_name = 'received_tag_slug'
+
+    def get_queryset(self):
+        queryset = Tag.objects.get(slug=self.kwargs['slug'])
+        return queryset
+
+
 index = IndexView.as_view()
 post = PostView.as_view()
 curriculum = CurriculumView.as_view()
 posts_list = PostsListView.as_view()
-# pt_posts = PortuguesePostsView.as_view()
-# en_posts = EnglishPostsView.as_view()
-
-    
-"""
-class PortuguesePostsView(ListView):
-    
-    template_name = "blog/portuguese_posts.html"
-    context_object_name = "pt_br_posts"
-    # pagination?
-
-    def get_queryset(self):
-        queryset = Post.objects.filter(language="portuguese-br") 
-        return queryset
-
-class EnglishPostsView(ListView):
-    
-    template_name = "blog/english_posts.html"
-    context_object_name = "en_posts"
-    # pagination?
-
-    def get_queryset(self):
-        
-        queryset = Post.objects.filter(language="english") 
-
-        return queryset
-"""
+tags = TagsView.as_view()
+posts_list_by_tag = PostListByTag.as_view()

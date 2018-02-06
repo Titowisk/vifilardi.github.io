@@ -1,5 +1,9 @@
-Eu quero um blog em que há a data de publicação e também a data de Edição mais recente.
+** Eu quero um blog em que há a data de publicação e também a data de Edição mais recente.
 
+** Custom 404 pages
 
-** filtrar as postagens com status=published para renderizar os objetos
+** Pagination
 
+** Tag View, HTML, Url...
+
+** Usar Javascript para mudar a cor da badge?

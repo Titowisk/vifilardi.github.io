@@ -23,7 +23,7 @@ p {
 }
 
 #aside-menu {
-    background-color: rgb(19, 108, 192);
+    background-color: #136CC0;
     color: #fff;
     height: 100%;
     width: 100%;
@@ -151,6 +151,31 @@ small {
     list-style: none;
     margin-top: 8px;
     padding-right: 10px;
+}
+
+/* tags.html */
+
+.tag-list {
+    display: inline-block;
+ 
+}
+
+.tag-item {
+    list-style: none;
+    float: left;
+    font-size: 1.5em;
+    padding-right: 8px;
+    color: #136CC0;
+}
+
+.badge {
+    color: #fff;
+    background-color: #136CC0;
+}
+
+.tag-item a:hover {
+    text-decoration: none;
+    color: #1A2E40;
 }
 
 /* SVG Icons */

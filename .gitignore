@@ -1,0 +1,9 @@
+# Django Template from Heroku
+venv
+*.pyc
+staticfiles
+.env
+
+# custom
+db.sqlite3
+local_settings.py

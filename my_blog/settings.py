@@ -44,8 +44,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # myapps
     'blog',
-    # external apps
-    'whitenoise.runserver_nostatic',
 ]
 
 MIDDLEWARE = [

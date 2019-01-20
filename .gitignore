@@ -5,5 +5,8 @@ staticfiles
 .env
 
 # custom
+.vscode
 db.sqlite3
 local_settings.py
+my_blog_env/
+design/

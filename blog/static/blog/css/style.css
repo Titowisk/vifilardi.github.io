@@ -29,6 +29,7 @@ p {
     width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
     font-size: 1.5em;
     text-align: left;
@@ -37,6 +38,7 @@ p {
 }
 
 #blog-author {
+    text-align: center;
     padding-bottom: 1em;
     font-family: 'Roboto Mono', monospace;
     font-size: 2em;
@@ -46,8 +48,13 @@ p {
 #left-navbar {
 }
 
-#github-icon {
+#logo-github {
     /*Como mudar a cor??*/
+}
+
+#menu-list {
+    display: flex;
+    align-items: center;
 }
 
 #menu-list a {
@@ -58,6 +65,23 @@ p {
 
 #menu-list a:hover {
     color: #1A2E40;
+}
+
+/* Menu Icon */
+
+.menu-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.item-icon {
+    float: left;
+    list-style: none;
+    margin-top: 8px;
+    padding-right: 10px;
 }
 
 #copyright {
@@ -137,20 +161,6 @@ small {
 
 .more-link a:hover {
     text-decoration: none;
-}
-/* Menu Icon */
-
-.menu-icon {
-    display: inline-block;
-    padding-left: 0;
-    margin-bottom: 0;
-}
-
-.item-icon {
-    float: left;
-    list-style: none;
-    margin-top: 8px;
-    padding-right: 10px;
 }
 
 /* tags.html */

@@ -10,11 +10,17 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{% static "blog/css/bootstrap.min.css" %} ">
 
+    <!-- FlatIcon CSS -->
+    <link rel="stylesheet" href="{% static "blog/icon/flaticon.css" %}">
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static "blog/css/style.css" %}">
 
     <!-- Prism CSS -->
-    <link rel="stylesheet" href="{% static "blog/css/prism.css" %}"> 
+    <link rel="stylesheet" href="{% static "blog/css/prism.css" %}">
+    
+  
+
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Righteous|Roboto+Mono" rel="stylesheet">
@@ -43,17 +49,17 @@
                         
                         <li class="item-icon">
                             <a href="{% url 'tags' %}">
-                                {% include 'svg/tag-menu.html' %}
+                                <i class="flaticon-tags"></i>
                             </a>
                         </li>
                         <li class="item-icon">
                             <a href="https://github.com/Titowisk">
-                                {% include 'svg/mark-github.html' %}
+                                <i class="flaticon-github-logo"></i>
                             </a>
                         </li>
                     </ul>                  
                 </nav>                                          
-                <p id="copyright">&copy; 2019 </p>
+                <p id="copyright"><i class="flaticon-copyright"></i> 2019 </p>
             </div>
         </div>  <!-- end Left side Menu -->
 

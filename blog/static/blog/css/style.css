@@ -84,7 +84,27 @@ p {
     padding-right: 10px;
 }
 
+.item-icon a {
+    color: transparent;
+}
+
+.flaticon-tags:before {
+    color: #fff;
+    font-size: 30px;
+}
+
+.flaticon-github-logo:before {
+    color: #fff;
+    font-size: 30px;
+}
+
+.flaticon-copyright:before {
+    color: #fff;
+    font-size: 0.8em;
+}
+
 #copyright {
+    margin-top: 30px;
     font-size: 0.8em;
 }
 

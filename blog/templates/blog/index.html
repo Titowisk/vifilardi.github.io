@@ -7,10 +7,7 @@
 <section id="posts">
     <div class="content">
         <h1 class="page-titles">Últimos Posts</h1>
-        {% for post in post_list reversed %}   
-            {% if post.slug == 'curriculum' %}
-            {% else %}
-                {% if post.status == 'Published' %}
+        {% for post in post_list %}   
                 <article>
                     <header class="post-header">
                         <h2 class="post-titles">
@@ -25,9 +22,7 @@
                     <span class="more-link">
                         <a href="{% url 'post' slug=post.slug %}">More...</a>
                     </span>
-                </article>
-                {% endif %}
-            {% endif %}     
+                </article>  
         {% endfor %}
     </div>
 </section>

@@ -7,15 +7,24 @@ class IndexView(ListView):
 
     template_name="blog/index.html"
     model = Post
-    context_object_name = "post_list"
+    # context_object_name = "post_list"
     # pagination?
+
+    def get_queryset(self):
+        # only posted filters and exclude Curriculum post
+        posted_post_list = Post.objects.filter(status="Published").exclude(slug="curriculum")
+        
+        # sort posts by posted date (latest first)
+        posted_post_list = sorted(posted_post_list, reverse=True, key=lambda x:x.posted)
+
+        return posted_post_list
 
     def get_context_data(self, **kwargs):
 
         context = super(IndexView, self).get_context_data(**kwargs)
-        if Post.objects.get(slug='curriculum'):
-            curriculum_post = Post.objects.get(slug='curriculum')
-            context['slug'] = curriculum_post.slug
+
+        # custom queryset for latest posted posts only and without curriculum post
+        context['post_list'] = self.get_queryset()
 
         return context
 

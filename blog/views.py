@@ -72,7 +72,14 @@ class TagsView(ListView):
     template_name = 'blog/tags.html'
     model = Tag
     context_object_name = 'tag_list'
+
+    def get_queryset(self):
+
+        # set() avoid duplicates from filter
+        published_tags = set(Tag.objects.filter(posts__status="Published"))
+        tags_count = {tag:tag.posts.filter(status="Published").count() for tag in published_tags}
     
+        return tags_count
 
 class PostListByTag(ListView):
 

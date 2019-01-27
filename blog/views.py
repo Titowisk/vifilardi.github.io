@@ -49,15 +49,20 @@ class CurriculumView(TemplateView):
 class PostsListView(ListView):
     
     template_name = 'blog/posts_list.html'
-    context_object_name = 'posts_list'
 
     def get_queryset(self):
-        queryset = Post.objects.filter(category__slug=self.kwargs['slug'])
-        return queryset
+        posted_post_list_by_category = Post.objects.filter(
+            category__slug=self.kwargs['slug']
+        ).filter(
+            status="Published"
+        )
+        
+        return sorted(posted_post_list_by_category, reverse=True, key=lambda x:x.posted)
 
     # what is wrong here??
     def get_context_data(self, **kwargs):
         context = super(PostsListView, self).get_context_data(**kwargs)
+        context['post_list'] = self.get_queryset()
         context['category'] = Category.objects.get(slug=self.kwargs['slug'])
         return context 
 

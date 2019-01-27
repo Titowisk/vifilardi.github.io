@@ -77,11 +77,23 @@ class TagsView(ListView):
 class PostListByTag(ListView):
 
     template_name = 'blog/posts_list_by_tag.html'
-    context_object_name = 'received_tag_slug'
+    context_object_name = 'posted_post_list_by_tag'
 
     def get_queryset(self):
-        queryset = Tag.objects.get(slug=self.kwargs['slug'])
-        return queryset
+        # tag = Tag.objects.get(slug=self.kwargs['slug'])
+        posted_post_list_by_tag = Post.objects.filter(
+            tag__slug=self.kwargs['slug']
+        ).filter(
+            status="Published"
+        )
+        return sorted(posted_post_list_by_tag, reverse=True, key=lambda x:x.posted)
+
+    def get_context_data(self, **kwargs):
+        context = super(PostListByTag, self).get_context_data(**kwargs)
+        # For the title of the page
+        context['tag'] = Tag.objects.get(slug=self.kwargs['slug'])
+
+        return context
 
 
 index = IndexView.as_view()

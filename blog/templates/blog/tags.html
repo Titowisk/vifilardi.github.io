@@ -9,13 +9,13 @@
         
         {% if tag_list %}
             <ul class="tag-list">
-            {% for tag in tag_list %}
-                {% if tag.posts.all.count > 0 %}
+            {% for tag, tag_count in tag_list.items %}
+                {% if tag_count > 0 %}
                 <li class="tag-item">
                     <a href="{% url 'posts_list_by_tag' slug=tag.slug %}">
                         {{tag.title}} 
                         <span class="badge">                        
-                            {{tag.posts.all.count}}                                  
+                            {{tag_count}}                                  
                         </span>
                     </a>
                 </li>

@@ -44,7 +44,8 @@ class Post(models.Model):
     def save(self, *args, **kwargs):
         self.slug = text.slugify(self.title)
         # When published the posted date will be automatically filled
-        if self.status == 'Published':
+        # but, if the post was already posted, it's only updated
+        if self.status == 'Published' and self.posted == None:
             self.posted = timezone.now()
         super().save(*args, **kwargs)
 

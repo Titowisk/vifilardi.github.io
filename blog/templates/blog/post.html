@@ -8,7 +8,11 @@
         <h2 class="post-titles">
             {{ post.title }}
         </h2>
-        <span class="post-date">{{ post.date_posted|date:"d N Y " }}</span>
+        <span class="post-date"> Publicado em: {{ post.posted|date:"d N Y " }}</span>
+        {% if post.updated|date:"d N Y " != post.posted|date:"d N Y " %}
+        <br>
+        <span class="post-date"> Atualizado em: {{ post.updated|date:"d N Y " }}</span>
+        {% endif %}
     </header>
     {% autoescape off %}
         {{ post.text }}

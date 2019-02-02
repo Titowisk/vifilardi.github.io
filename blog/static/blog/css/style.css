@@ -4,6 +4,17 @@ font-family: 'Righteous', cursive;
 
 */
 
+/* MENU
+
+    - Left Side Menu
+    - Right Side blog
+    - tags.html
+
+    - Prism specific
+    - Responsive
+
+*/
+
 html, body {
     height: 100%;
 }
@@ -115,7 +126,6 @@ p {
     padding-left: 2em;
     padding-right: 2em; 
     height: 100vh;
-    
 }
 
 .page-titles {
@@ -132,11 +142,13 @@ p {
     font-size: 2.5em;
     color: #136CC0;
     margin: 0;
+    margin-bottom: 0.2em;
+
 }
 
 .post-date {
     color: #1A2E40;
-    font-size: 1.4em;
+    font-size: 1.0em;
 }
 
 .post-list {
@@ -160,6 +172,7 @@ small {
     display: inline-block;
     width: 100%;
     margin-top: 1em;
+    margin-bottom: 2em;
     padding-top: 0.8em;
     border-top: solid 0.2em #136CC0;
 }
@@ -225,7 +238,12 @@ small {
     height: 32px;
 }
 
-/* Responsividade */
+/* Prism specific */
+pre[class*="language-"] {
+    margin: 1.5em 0;
+}
+
+/* Responsive */
 
 @media (min-width: 768px) {
     html, body {
@@ -233,7 +251,7 @@ small {
     }
 
     .content {
-        overflow: scroll;
+        overflow-y: scroll;
         padding-right: 4em;
     }
 }

@@ -142,11 +142,13 @@ p {
     font-size: 2.5em;
     color: #136CC0;
     margin: 0;
+    margin-bottom: 0.2em;
+
 }
 
 .post-date {
     color: #1A2E40;
-    font-size: 1.4em;
+    font-size: 1.0em;
 }
 
 .post-list {

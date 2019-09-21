@@ -9,4 +9,5 @@ staticfiles
 db.sqlite3
 local_settings.py
 my_blog_env/
+env/
 design/
